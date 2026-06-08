@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P.Shashidhar Reddy — Data Analyst & AI Enthusiast</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#E8001C;--dark-red:#B50016;--black:#0D0D0D;--white:#FFFFFF;--off-white:#F5F0EB;--gray:#888}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;transition:all 0.3s}
+nav.scrolled{background:rgba(13,13,13,0.93);backdrop-filter:blur(12px);padding:14px 60px;border-bottom:1px solid rgba(232,0,28,0.2)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.5px;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--red);transition:width 0.3s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.hire-btn{background:var(--red);color:var(--white);border:none;padding:10px 24px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:0.3px;transition:all 0.2s;text-decoration:none}
+.hire-btn:hover{background:var(--dark-red);transform:scale(1.04)}
+
+/* HERO */
+#home{min-height:100vh;background:var(--red);display:flex;align-items:center;position:relative;overflow:hidden;padding:0 60px}
+.hero-blob1{position:absolute;right:-100px;bottom:-80px;width:650px;height:650px;background:rgba(0,0,0,0.12);border-radius:50%;pointer-events:none}
+.hero-blob2{position:absolute;right:180px;top:-140px;width:400px;height:400px;background:rgba(0,0,0,0.07);border-radius:50%;pointer-events:none}
+.hero-content{flex:1;z-index:2;max-width:500px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.18);padding:6px 16px;border-radius:50px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:26px;color:rgba(255,255,255,0.9)}
+.hero-tag span{width:8px;height:8px;background:#00FF88;border-radius:50%;animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-hi{font-size:20px;font-weight:400;color:rgba(255,255,255,0.85);margin-bottom:6px}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.95;letter-spacing:2px;color:var(--white);margin-bottom:14px}
+.hero-role-wrap{font-size:24px;font-weight:700;margin-bottom:18px;color:rgba(255,255,255,0.95);min-height:36px}
+.cursor{display:inline-block;width:3px;height:24px;background:var(--white);margin-left:2px;animation:cblink 0.7s infinite;vertical-align:middle}
+@keyframes cblink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:36px;max-width:400px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--white);color:var(--red);padding:13px 30px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;border:2px solid var(--white)}
+.btn-primary:hover{background:transparent;color:var(--white)}
+.btn-outline{background:transparent;color:var(--white);padding:13px 30px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;border:2px solid rgba(255,255,255,0.6);transition:all 0.2s}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.1)}
+.hero-stats{display:flex;gap:36px;margin-top:44px}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--white);line-height:1}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.5px;margin-top:2px}
+
+/* HERO PHOTO */
+.hero-visual{flex:0 0 460px;display:flex;align-items:flex-end;justify-content:center;z-index:2;position:relative;height:100vh}
+..photo-wrap{
+    position:relative;
+    width:1000px;
+    height:100%;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+}
+
+.photo-shadow{
+    display:none;
+}
+
+.hero-photo{
+    position:relative;
+    z-index:2;
+    width:850px;
+    max-width:none;
+    height:auto;
+    max-height:95vh;
+    object-fit:contain;
+    object-position:bottom center;
+    border-radius:0;
+    filter:drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+    animation:heroFloat 4s ease-in-out infinite;
+}
+}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* float cards */
+.float-card{position:absolute;background:rgba(255,255,255,0.96);border-radius:16px;padding:13px 17px;box-shadow:0 20px 40px rgba(0,0,0,0.2);z-index:5;animation:float 3s ease-in-out infinite}
+.float-card.c2{animation-delay:1.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fc1{bottom:220px;left:-10px}
+.fc2{top:140px;right:-10px}
+.fc-label{font-size:10px;color:#777;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+.fc-value{font-size:17px;font-weight:700;color:#0D0D0D;margin-top:2px}
+.fc-sub{font-size:11px;color:#666;margin-top:1px}
+.fc-dot{width:7px;height:7px;background:#00C853;border-radius:50%;display:inline-block;margin-right:5px}
+
+/* SECTIONS */
+section{padding:90px 60px}
+.section-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:58px;letter-spacing:1px;line-height:1;color:var(--white);margin-bottom:44px}
+.section-title span{color:var(--red)}
+
+/* ABOUT */
+#about{background:#111}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-text p{font-size:15px;line-height:1.8;color:rgba(255,255,255,0.7);margin-bottom:18px}
+.about-text p strong{color:var(--white)}
+.about-info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.info-item{background:rgba(232,0,28,0.08);border:1px solid rgba(232,0,28,0.2);border-radius:12px;padding:14px}
+.info-item .label{font-size:10px;color:var(--red);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.info-item .value{font-size:14px;color:var(--white);font-weight:500}
+.exp-card{background:var(--red);border-radius:20px;padding:28px;display:flex;align-items:center;gap:18px}
+.exp-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--white);line-height:1}
+.exp-text .t1{font-size:15px;font-weight:700;color:var(--white)}
+.exp-text .t2{font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px}
+.tools-card{background:#1A1A1A;border-radius:20px;padding:22px;border:1px solid rgba(255,255,255,0.07);margin-top:18px}
+.tools-card h4{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.tools-row{display:flex;flex-wrap:wrap;gap:8px}
+.tool-pill{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:5px 13px;border-radius:50px;font-size:12px;color:rgba(255,255,255,0.72);font-weight:500}
+
+/* SKILLS */
+#skills{background:#0D0D0D}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.skill-card{background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:26px;transition:all 0.3s;position:relative;overflow:hidden}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.skill-card:hover::before{transform:scaleX(1)}
+.skill-card:hover{border-color:rgba(232,0,28,0.3);transform:translateY(-4px)}
+.skill-icon{width:44px;height:44px;background:rgba(232,0,28,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px}
+.skill-card h3{font-size:15px;font-weight:700;color:var(--white);margin-bottom:11px}
+.skill-items{display:flex;flex-wrap:wrap;gap:7px}
+.skill-tag{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:4px 11px;border-radius:50px;font-size:11px;color:rgba(255,255,255,0.6)}
+
+/* PROJECTS */
+#projects{background:#111}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.project-card{background:#161616;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s}
+.project-card:hover{transform:translateY(-6px);border-color:rgba(232,0,28,0.35)}
+.project-top{padding:28px;min-height:130px;display:flex;align-items:flex-end}
+.p1-top{background:linear-gradient(135deg,var(--red),var(--dark-red))}
+.p2-top{background:linear-gradient(135deg,#0a1628,#1a2a45);border-bottom:1px solid rgba(60,130,255,0.2)}
+.p3-top{background:linear-gradient(135deg,#0d1a0d,#1a2e1a);border-bottom:1px solid rgba(0,200,80,0.2)}
+.p4-top{background:linear-gradient(135deg,#1a0d1a,#2e1a2e);border-bottom:1px solid rgba(150,80,200,0.2)}
+.project-num{font-family:'Bebas Neue',sans-serif;font-size:56px;color:rgba(255,255,255,0.15);line-height:1;align-self:flex-start}
+.project-body{padding:24px}
+.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
+.p-tag{padding:3px 11px;border-radius:50px;font-size:11px;font-weight:600}
+.tag-red{background:rgba(232,0,28,0.15);color:#FF6B6B;border:1px solid rgba(232,0,28,0.2)}
+.tag-green{background:rgba(0,200,80,0.1);color:#4ADE80;border:1px solid rgba(0,200,80,0.15)}
+.tag-purple{background:rgba(150,80,200,0.1);color:#C084FC;border:1px solid rgba(150,80,200,0.15)}
+.tag-blue{background:rgba(60,130,255,0.1);color:#93C5FD;border:1px solid rgba(60,130,255,0.15)}
+.tag-gray{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.08)}
+.project-body h3{font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px}
+.project-body p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7}
+.project-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;color:var(--red);font-size:13px;font-weight:600;text-decoration:none;transition:gap 0.2s}
+.project-link:hover{gap:10px}
+.project-link svg{width:13px;height:13px;stroke:var(--red);stroke-width:2.5;fill:none}
+
+/* EXPERIENCE */
+#experience{background:#0D0D0D}
+.exp-timeline{position:relative;padding-left:38px}
+.exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(232,0,28,0.3)}
+.timeline-item{position:relative;margin-bottom:48px}
+.timeline-item::before{content:'';position:absolute;left:-44px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--red);border:3px solid #0D0D0D;box-shadow:0 0 0 3px rgba(232,0,28,0.3)}
+.timeline-date{font-size:11px;color:var(--red);font-weight:600;letter-spacing:0.5px;margin-bottom:6px}
+.timeline-role{font-size:19px;font-weight:700;color:var(--white);margin-bottom:2px}
+.timeline-company{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:14px}
+.timeline-points{list-style:none;display:flex;flex-direction:column;gap:7px}
+.timeline-points li{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;padding-left:14px;position:relative}
+.timeline-points li::before{content:"▪";position:absolute;left:0;color:var(--red);font-size:11px}
+.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.cert-card{background:#161616;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:border-color 0.3s}
+.cert-card:hover{border-color:rgba(232,0,28,0.3)}
+.cert-icon{width:40px;height:40px;min-width:40px;background:var(--red);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.cert-card h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.cert-card p{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5}
+.cert-date{font-size:10px;color:var(--red);font-weight:600;letter-spacing:0.3px;margin-top:7px}
+
+/* CONTACT */
+#contact{background:var(--red);position:relative;overflow:hidden}
+#contact::before{content:'HIRE ME';position:absolute;right:-60px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:240px;color:rgba(0,0,0,0.07);letter-spacing:-10px;white-space:nowrap;pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:2}
+.contact-left p{font-size:16px;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:36px}
+.contact-links{display:flex;flex-direction:column;gap:14px}
+.contact-link{display:flex;align-items:center;gap:13px;color:var(--white);text-decoration:none;font-size:14px;font-weight:500;padding:14px 18px;border-radius:13px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.15);transition:all 0.2s}
+.contact-link:hover{background:rgba(0,0,0,0.22);transform:translateX(4px)}
+.contact-link-icon{width:34px;height:34px;background:rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.contact-form input,.contact-form textarea{background:rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.22);border-radius:11px;padding:14px 18px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;width:100%}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.42)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:rgba(255,255,255,0.5)}
+.contact-form textarea{height:130px;resize:none}
+.contact-form button{background:var(--white);color:var(--red);border:none;padding:15px;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.contact-form button:hover{background:var(--off-white);transform:scale(1.02)}
+
+footer{background:#090909;padding:28px 60px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.05)}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--white)}
+.footer-logo span{color:var(--red)}
+footer p{font-size:12px;color:rgba(255,255,255,0.28)}
+
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  nav.scrolled{padding:12px 20px}
+  .nav-links{display:none}
+  #home{padding:90px 20px 50px;flex-direction:column;min-height:auto;gap:40px}
+  .hero-name{font-size:56px}
+  .hero-visual{height:auto;flex:none;width:100%}
+  .photo-wrap{width:100%;height:320px}
+  .hero-photo{width:220px;max-height:320px;border-radius:50% 50% 18px 18px}
+  .fc1,.fc2{display:none}
+  section{padding:60px 20px}
+  .section-title{font-size:44px}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .projects-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:10px;padding:20px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#home" class="nav-logo">Shashi<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:shashi08dhar@gmail.com" class="hire-btn">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag"><span></span>Available for Internship &amp; Full-Time Roles</div>
+    <p class="hero-hi">Hi, I&#39;m</p>
+    <h1 class="hero-name">P.Shashidhar<br>Reddy.</h1>
+    <div class="hero-role-wrap">
+      <span id="typed-text"></span><span class="cursor"></span>
+    </div>
+    <p class="hero-sub">B.Tech CSE (Data Science) graduate from GNITC, Hyderabad. Skilled in Python, SQL, Power BI &amp; ML. Passionate about turning data into decisions and enabling AI adoption at scale.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Contact Me</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5K+</div>
+        <div class="stat-label">Records Processed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="photo-wrap">
+      <div class="photo-shadow"></div>
+     <img
+  src="C:\Users\shash\Downloads\New folder (2)\ChatGPT Image Jun 8, 2026, 01_05_05 PM.png"
+  alt="P.Shashidhar Reddy"
+  class="hero-photo">
+     <div class="float-card fc1">
+        <div class="fc-label"><span class="fc-dot"></span>Currently</div>
+        <div class="fc-value">Amber</div>
+        <div class="fc-sub">Data Analyst Apprentice</div>
+      </div>
+      <div class="float-card c2 fc2">
+        <div class="fc-label">Education</div>
+        <div class="fc-value">B.Tech CSE</div>
+        <div class="fc-sub">Data Science · GNITC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Who I <span>Am.</span></h2>
+      <p>I&#39;m <strong>P. Shashidhar Reddy</strong>, a Computer Science graduate specializing in Data Science from GNITC, Hyderabad. I love transforming raw data into clear, actionable insights that drive real business decisions.</p>
+      <p>With hands-on experience in <strong>Python, SQL, Power BI, and cloud platforms like Snowflake</strong>, I&#39;ve processed 5,000+ records and built dashboards that actually get used. I&#39;m equally comfortable with ML models and business ops workflows.</p>
+      <p>Right now, I&#39;m excited about the intersection of <strong>AI adoption and operational tooling</strong> — helping organizations not just deploy AI tools, but make them stick.</p>
+      <div class="about-info">
+        <div class="info-item"><div class="label">Location</div><div class="value">Hyderabad, Telangana</div></div>
+        <div class="info-item"><div class="label">Degree</div><div class="value">B.Tech CSE (DS)</div></div>
+        <div class="info-item"><div class="label">Currently At</div><div class="value">Amber — Apprentice</div></div>
+        <div class="info-item"><div class="label">Open To</div><div class="value">Internship &amp; Full-Time</div></div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="exp-card">
+        <div class="exp-num">4</div>
+        <div class="exp-text">
+          <div class="t1">Months Experience</div>
+          <div class="t2">Data Analytics &amp; Operations · Present</div>
+        </div>
+      </div>
+      <div class="tools-card">
+        <h4>Tools I Work With</h4>
+        <div class="tools-row">
+          <span class="tool-pill">Python</span><span class="tool-pill">SQL</span><span class="tool-pill">Power BI</span>
+          <span class="tool-pill">Snowflake</span><span class="tool-pill">Excel</span><span class="tool-pill">TensorFlow</span>
+          <span class="tool-pill">Notion</span><span class="tool-pill">Airtable</span><span class="tool-pill">ChatGPT</span>
+          <span class="tool-pill">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div style="text-align:center;margin-bottom:52px" class="fade-up">
+    <p class="section-label">What I Do</p>
+    <h2 class="section-title" style="margin-bottom:0">My <span>Skills.</span></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card fade-up"><div class="skill-icon">🐍</div><h3>Programming</h3><div class="skill-items"><span class="skill-tag">Python</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">SQL</span><span class="skill-tag">MySQL</span></div></div>
+    <div class="skill-card fade-up"><div class="skill-icon">🤖</div><h3>AI &amp; Machine Learning</h3><div class="skill-items"><span class="skill-tag">ML Fundamentals</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Data Preprocessing</span><span class="skill-tag">Model Evaluation</span><span class="skill-tag">Generative AI</span><span class="skill-tag">LLM Workflows</span></div></div>
+    <div class="skill-card fade-up"><div class="skill-icon">📊</div><h3>Data &amp; BI Tools</h3><div class="skill-items"><span class="skill-tag">Power BI</span><span class="skill-tag">DAX</span><span class="skill-tag">Power Query</span><span class="skill-tag">Excel</span><span class="skill-tag">Snowflake</span><span class="skill-tag">Google Sheets</span></div></div>
+    <div class="skill-card fade-up"><div class="skill-icon">🔧</div><h3>AI Ops &amp; Tooling</h3><div class="skill-items"><span class="skill-tag">Notion</span><span class="skill-tag">Airtable</span><span class="skill-tag">Adoption Tracking</span><span class="skill-tag">Usage Dashboards</span><span class="skill-tag">Onboarding Playbooks</span></div></div>
+    <div class="skill-card fade-up"><div class="skill-icon">📈</div><h3>Data Analysis</h3><div class="skill-items"><span class="skill-tag">EDA</span><span class="skill-tag">Data Cleaning</span><span class="skill-tag">Trend Analysis</span><span class="skill-tag">KPI Reporting</span><span class="skill-tag">Statistical Analysis</span></div></div>
+    <div class="skill-card fade-up"><div class="skill-icon">🤝</div><h3>Core Competencies</h3><div class="skill-items"><span class="skill-tag">Stakeholder Coordination</span><span class="skill-tag">Documentation</span><span class="skill-tag">Data Storytelling</span><span class="skill-tag">Problem Solving</span></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div style="text-align:center;margin-bottom:52px" class="fade-up">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title" style="margin-bottom:0">Featured <span>Projects.</span></h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade-up">
+      <div class="project-top p1-top"><div class="project-num">01</div></div>
+      <div class="project-body">
+        <div class="project-tags"><span class="p-tag tag-blue">Snowflake</span><span class="p-tag tag-green">Python</span><span class="p-tag tag-purple">Machine Learning</span></div>
+        <h3>Healthcare Data Insights</h3>
+        <p>End-to-end data pipeline on Snowflake to ingest, clean, and transform large-scale healthcare datasets. Developed ML models for pattern detection and predictive insights from real-world operational data.</p>
+        <a href="https://github.com/Shashidhar1289" class="project-link" target="_blank">View on GitHub <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-top p2-top" style="justify-content:flex-end"><div class="project-num">02</div></div>
+      <div class="project-body">
+        <div class="project-tags"><span class="p-tag tag-red">Power BI</span><span class="p-tag tag-gray">SQL</span><span class="p-tag tag-gray">Excel</span></div>
+        <h3>UPI Transaction Analysis &amp; Dashboard</h3>
+        <p>Analyzed large-scale datasets to identify adoption patterns, behavioral trends, and usage anomalies. Built interactive Power BI dashboards with KPIs and drill-throughs for data-driven decisions.</p>
+        <a href="https://github.com/Shashidhar1289" class="project-link" target="_blank">View on GitHub <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-top p3-top" style="justify-content:flex-end"><div class="project-num">03</div></div>
+      <div class="project-body">
+        <div class="project-tags"><span class="p-tag tag-red">Power BI</span><span class="p-tag tag-gray">Excel</span><span class="p-tag tag-gray">Power Query</span></div>
+        <h3>Call Centre Performance Dashboard</h3>
+        <p>Designed operational dashboards tracking response time, resolution rate, and team KPIs. Handled end-to-end pipeline from raw data cleaning to stakeholder-ready visual reporting.</p>
+        <a href="https://github.com/Shashidhar1289" class="project-link" target="_blank">View on GitHub <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-top p4-top" style="justify-content:flex-end"><div class="project-num">04</div></div>
+      <div class="project-body">
+        <div class="project-tags"><span class="p-tag tag-blue">Notion</span><span class="p-tag tag-blue">Airtable</span><span class="p-tag tag-gray">Google Sheets</span></div>
+        <h3>Crime Hotspot Prediction</h3>
+        <p>Machine learning model to predict crime-prone areas using historical and geospatial data. Performed feature engineering, EDA, and evaluated model performance using classification metrics.</p>
+        <a href="https://github.com/Shashidhar1289" class="project-link" target="_blank">View on GitHub <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE & CERTS -->
+<section id="experience">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px">
+    <div class="fade-up">
+      <p class="section-label">Journey</p>
+      <h2 class="section-title">Experience &amp; <span>Education.</span></h2>
+      <div class="exp-timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">MARCH 2025 — PRESENT · 4 MONTHS</div>
+          <div class="timeline-role">Apprentice — Operations (Data Analyst Focus)</div>
+          <div class="timeline-company">Amber</div>
+          <ul class="timeline-points">
+            <li>Processed and validated 5,000+ records ensuring data accuracy and hygiene</li>
+            <li>Performed data cleaning, transformation, and analysis using Excel, SQL, and Python</li>
+            <li>Tracked operational trends to surface insights for team decision-making</li>
+            <li>Collaborated across operations, product, and support teams</li>
+            <li>Maintained structured documentation and reporting for stakeholders</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">DEC 2021 — JUNE 2025</div>
+          <div class="timeline-role">B.Tech — Computer Science &amp; Engineering</div>
+          <div class="timeline-company">GNITC, Hyderabad · Data Science Specialization</div>
+          <ul class="timeline-points">
+            <li>Specialized in Data Science — ML, analytics, and AI applications</li>
+            <li>Built end-to-end data projects across healthcare, fintech, and operations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <p class="section-label">Credentials</p>
+      <h2 class="section-title">Certifi<span>cations.</span></h2>
+      <div class="certs-grid">
+        <div class="cert-card"><div class="cert-icon">🎓</div><div><h4>Data Analyst Trainee</h4><p>Intensive training in SQL, Excel, Power BI, and Python with hands-on analytics projects</p><div class="cert-date">AccioJob · June–Dec 2025</div></div></div>
+        <div class="cert-card"><div class="cert-icon">🏆</div><div><h4>Data Analytics &amp; Visualization</h4><p>Job simulation covering data cleaning, modeling, and stakeholder-focused storytelling</p><div class="cert-date">Accenture (Forage) · Feb 2025</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left fade-up">
+      <p class="section-label" style="color:rgba(255,255,255,0.6)">Get In Touch</p>
+      <h2 class="section-title" style="color:var(--white);margin-bottom:16px">Let's Work <span style="color:rgba(0,0,0,0.25)">Together.</span></h2>
+      <p>Open to internships and full-time data / AI roles. If you're building something interesting with data — let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:shashi08dhar@gmail.com" class="contact-link"><div class="contact-link-icon">✉️</div>shashi08dhar@gmail.com</a>
+        <a href="https://www.linkedin.com/in/p-shashidhar-reddy-2bb2a428b" target="_blank" class="contact-link"><div class="contact-link-icon">💼</div>linkedin.com/in/p-shashidhar-reddy</a>
+        <a href="https://github.com/Shashidhar1289" target="_blank" class="contact-link"><div class="contact-link-icon">💻</div>github.com/Shashidhar1289</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Shashi<span>.</span></div>
+  <p>&#169; 2025 P.Shashidhar Reddy · All rights reserved.</p>
+  <p>Data Analyst · AI Enthusiast · Hyderabad</p>
+</footer>
+
+<script>
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',scrollY>60));
+
+const roles=['Data Analyst','ML Engineer','Software Engineer','Power BI Developer','SQL Expert','AI Enthusiast'];
+let ri=0,ci=0,del=false;
+const el=document.getElementById('typed-text');
+function type(){
+  const cur=roles[ri];
+  if(!del){el.textContent=cur.slice(0,++ci);if(ci===cur.length){setTimeout(()=>{del=true;type()},2000);return}}
+  else{el.textContent=cur.slice(0,--ci);if(ci===0){del=false;ri=(ri+1)%roles.length}}
+  setTimeout(type,del?55:95);
+}
+type();
+
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(e=>obs.observe(e));
+
+document.getElementById('sendBtn').addEventListener('click',function(){
+  const fields=[...document.querySelectorAll('.contact-form input,.contact-form textarea')];
+  const ok=fields.every(f=>f.value.trim());
+  if(ok){
+    const name=fields[0].value.trim();
+    const email=fields[1].value.trim();
+    const subject=fields[2].value.trim();
+    const msg=fields[3].value.trim();
+    window.location.href=`mailto:shashi08dhar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\n\n'+msg)}`;
+    this.textContent='Opening Mail ✓';
+    this.style.background='#00C853';this.style.color='#fff';
+    setTimeout(()=>{this.textContent='Send Message →';this.style.background='';this.style.color=''},3000);
+  } else {
+    this.textContent='Please fill all fields!';
+    this.style.background='#ff4444';this.style.color='#fff';
+    setTimeout(()=>{this.textContent='Send Message →';this.style.background='';this.style.color=''},2000);
+  }
+});
+</script>
+</body>
+</html>
